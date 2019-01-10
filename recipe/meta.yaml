@@ -1,0 +1,37 @@
+{% set version = "1.0.3" %}
+
+package:
+  name: win-utils
+  version: {{ version }}
+
+source:
+  - url: https://download.osgeo.org/osgeo4w/x86_64/release/msvcrt/msvcrt-1.0.3-1-src.tar.bz2
+    fn: win-utils-{{ version }}-1-src.tar.bz2
+    sha256: aea2e27884d3eefdd6c048ee6902b8931410db920111c44b70a9712b79dac413
+
+build:
+  number: 1000
+  skip: True  # [not win]
+
+requirements:
+  build:
+    - vc 14
+  host:
+  run:
+
+test:
+  commands:
+    - if not exist "%LIBRARY_BIN%\\textreplace.exe" exit 1  # [win]
+    - if not exist "%LIBRARY_BIN%\\nircmd.exe" exit 1  # [win]
+    - if not exist "%LIBRARY_BIN%\\nircmdc.exe" exit 1  # [win]
+    - if not exist "%LIBRARY_PREFIX%\\doc\\NirCmd.chm" exit 1  # [win]
+
+about:
+  home: https://trac.osgeo.org/osgeo4w/
+  license: Prop
+  summary: Windows runtime utilities
+  dev_url: https://download.osgeo.org/osgeo4w/x86_64/release/msvcrt/
+
+extra:
+  recipe-maintainers:
+    - dakcarto
