@@ -28,7 +28,7 @@ test:
 
 about:
   home: https://trac.osgeo.org/osgeo4w/
-  license: Prop
+  license: Proprietary
   summary: Windows runtime utilities
   dev_url: https://download.osgeo.org/osgeo4w/x86_64/release/msvcrt/
 
